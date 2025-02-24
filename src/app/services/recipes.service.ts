@@ -5,5 +5,12 @@ import { Injectable } from '@angular/core';
 })
 export class RecipesService {
 
-  constructor() { }
+  private list: string[] = [];
+
+  constructor() {
+   }
+
+  getRecipes(): string[]{
+    return this.list;
+  }
 }
