@@ -2,8 +2,17 @@
 <p>title</p>
 
 <div>
-    <h3>Ingredientes</h3>
-    <div *ngFor="let item of ingredients">
-        <p>item</p>
+    <div>
+        <h3>Ingredientes</h3>
+        @for( item of currentRecipe.ingredients; track item){
+            <p>item</p>
+        }
     </div>
+    <div>
+        <h3>Instruções</h3>
+        @for( item of currentRecipe.steps; track item){
+            <p>item</p>
+        }
+    </div>
+    
 </div>    

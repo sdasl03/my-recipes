@@ -1,0 +1,21 @@
+<div class="search-container">
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      (input)="search()"
+      placeholder="Search for a recipe..."
+      class="search-input"
+    />
+    
+    <ul class="results">
+        @for ( item of filteredData; track item){
+            <li >
+                {{ item.name }} - {{ item.category }}
+              </li>
+        }@empty {
+            <p>nothing</p>
+        }
+      
+    </ul>
+  </div>
+  
