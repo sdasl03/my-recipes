@@ -1,0 +1,17 @@
+<div class="recipe-item">
+  <div>
+    <h4>
+      <span
+        class="icon-star"
+        [class.active]="isFavourite()"
+        (click)="toggleFavourite.emit(recipe().id)"
+      >
+        {{ recipe()?.title }}
+      </span>
+      <small>
+        <span> </span>
+      </small>
+    </h4>
+  </div>
+  <button [routerLink]="'details/'">Details</button>
+</div>
