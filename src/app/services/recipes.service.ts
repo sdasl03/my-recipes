@@ -27,7 +27,7 @@ export class RecipesService {
   filterResults(filter: string) : Observable<Recipe[]>{
     return  this.getRecipes().pipe(
       map(recipes => recipes.filter(recipe =>
-          recipe.title.toLowerCase().includes(filter))
+          recipe.title.toLowerCase().includes(filter.toLowerCase()))
       )
     );
   }

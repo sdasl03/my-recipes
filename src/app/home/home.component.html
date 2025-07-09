@@ -1,16 +1,24 @@
 <div class="container">
-    <form>
+  <form>
     <fieldset>
       <legend>Filters</legend>
       <label for="title">Title</label>
-      <input #titleFilter type="text" name="title" (input)="filter(titleFilter.value)"/>
+      <input
+        #titleFilter
+        type="text"
+        name="title"
+        (input)="filter(titleFilter.value)"
+      />
     </fieldset>
   </form>
-<!-- <input type="text" placeholder="Filter by recipe Title" #filter (input)="filter(filter.value)">-->
+  <!-- <input type="text" placeholder="Filter by recipe Title" #filter (input)="filter(filter.value)">-->
 
-@for(item of recipes$ | async; track item.id){
-    {{item.title}}
-    <br>
-}
+  @for(item of recipes$ | async; track item.id){
+  <app-recipe-item
+    [recipe]="item" highlight [isFavourite]="favouriteService.isFavourite(item.id)()"
+    (toggleFavourite)="favouriteService.toggleFavourite(item.id)"
+  ></app-recipe-item
+  >
+  <br />
+  }
 </div>
-

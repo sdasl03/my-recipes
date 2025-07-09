@@ -12,6 +12,8 @@ export class FavouriteService {
   }
 
   toggleFavourite(id: string) {
+
+    console.log("toggle "+id);
     let index=this.favourites().findIndex((recipeId)=>recipeId===id);
     if(index == -1){
       this.favourites.set([...this.favourites(),id]);
@@ -19,6 +21,7 @@ export class FavouriteService {
       this.favourites().splice(index,1);
       this.favourites.set(this.favourites());
     }
+    console.log(this.favourites()+"");
   }
 
 }
