@@ -11,17 +11,22 @@ import { map } from 'rxjs/internal/operators/map';
 })
 export class RecipesService {
 
-  constructor() { }
+  constructor() {this.defaultValue =this.recipesList()?.find((val)=>{val.id==='r003'});
+  this.currentRecipe.set(this.defaultValue);
+ }
 
-  readonly recipesList = toSignal(this.getRecipes());
-  readonly recipeDetailsList = toSignal(this.getRecipeDetails());
+  readonly recipesList = signal(recipes);
   readonly filteredRecipeList = signal<Recipe[]>([]);
+  defaultValue = this.recipesList()?.find((val)=>{val.id==='r003'});
+  readonly currentRecipe = signal<Recipe| undefined>(this.defaultValue|| undefined);
+
+
   getRecipes(): Observable<Recipe[]> {
     return of(recipes);
   }
 
-  getRecipeDetails(): Observable<RecipeDetails[]> {
-    return of(recipeDetailList);
+  getRecipeDetails(id: string): Observable<RecipeDetails> {
+    return of(recipeDetailList.find((recipe)=>recipe.id===id)??recipeDetailList[0]);
   }
 
   filterResults(filter: string) : Observable<Recipe[]>{
@@ -30,6 +35,13 @@ export class RecipesService {
           recipe.title.toLowerCase().includes(filter.toLowerCase()))
       )
     );
+  }
+
+  selectCurrentRecipe(recipe : string){
+    const cur = this.recipesList()?.find((val)=>val.id===recipe);
+    if(cur){
+      this.currentRecipe.set(cur);
+    }
   }
 
 }

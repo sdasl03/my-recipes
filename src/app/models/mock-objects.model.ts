@@ -1,6 +1,6 @@
-import { RecipeType } from "./recipe.model";
+import { Recipe, RecipeDetails, RecipeType } from "./recipe.model";
 
-export const recipes = [
+export const recipes: Recipe[] = [
     {
         id: "r001",
         title: "Classic Spaghetti Bolognese",
@@ -44,7 +44,7 @@ export const recipes = [
         type: RecipeType.vegetarian
     }
 ];
-export const recipeDetailList = [
+export const recipeDetailList: RecipeDetails[] = [
     {
         id: "r001",
         title: "Classic Spaghetti Bolognese",

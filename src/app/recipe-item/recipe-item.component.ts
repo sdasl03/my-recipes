@@ -15,4 +15,8 @@ export class RecipeItemComponent {
   toggleFavourite = output<string>();
 
   recipe = input.required<Recipe>();
+
+  getLink(): string{
+    return 'details/'+this.recipe().id;
+  }
 }

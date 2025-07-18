@@ -17,9 +17,10 @@ export class HomeComponent {
   recipeService = inject(RecipesService);
   favouriteService = inject(FavouriteService);
 
-  recipes$ = this.recipeService.getRecipes();
 
+  recipes$ = this.recipeService.getRecipes();
+  filteredRecipes$ = this.recipes$;
   filter(filter: string) {
-    this.recipes$ = this.recipeService.filterResults(filter);
+    this.filteredRecipes$ = this.recipeService.filterResults(filter);
   }
 }
