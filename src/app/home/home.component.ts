@@ -1,16 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { RecipesService } from '../services/recipes.service';
+import { AsyncPipe } from '@angular/common';
+import { RecipeItemComponent } from "../recipe-item/recipe-item.component";
+import { FavouriteService } from '../services/favourite.service';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [AsyncPipe, RecipeItemComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
+  standalone: true
 })
 export class HomeComponent {
 
   filteredList: string[] = [];
+  recipeService = inject(RecipesService);
+  favouriteService = inject(FavouriteService);
 
-  constructor(){
-    
+
+  recipes$ = this.recipeService.getRecipes();
+  filteredRecipes$ = this.recipes$;
+  filter(filter: string) {
+    this.filteredRecipes$ = this.recipeService.filterResults(filter);
   }
 }

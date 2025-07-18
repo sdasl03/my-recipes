@@ -1,1 +1,17 @@
-<p>home works!</p>
+<div class="container">
+  <input
+    type="text"
+    placeholder="Filter by recipe Title"
+    #filterBy
+    (input)="filter(filterBy.value)"
+  />
+  @for(item of filteredRecipes$ | async; track item.id){
+  <app-recipe-item
+    [recipe]="item"
+    highlight
+    [isFavourite]="favouriteService.isFavourite(item.id)()"
+    (toggleFavourite)="favouriteService.toggleFavourite(item.id)"
+  ></app-recipe-item>
+  <br />
+  }
+</div>

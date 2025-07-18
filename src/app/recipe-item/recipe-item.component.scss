@@ -1,0 +1,34 @@
+:root{
+    --star-width:1rem;
+    --star-height:1rem;
+}
+.recipe-item {
+  display: flex;
+  justify-content: space-between;
+}
+.subtitle {
+  display: flex;
+  gap: 1rem;
+}
+
+.star-icon {
+  width: var(--star-width);
+  height: var(--star-height);
+  fill: white; /* Star color */
+  stroke: black; /* Border around the star */
+  stroke-width: 1; /* Stroke width */
+  &.active{
+    fill: gold;
+  }
+}
+.star-icon-inactive {
+  width: var(--star-width);
+  height: var(--star-height);
+  fill: white; /* Star color */
+  stroke: black; /* Border around the star */
+  stroke-width: 1; /* Stroke width */
+}
+.title-container{
+    display: flex;
+    align-items: center;
+}
